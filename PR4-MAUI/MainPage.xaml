@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PR4_MAUI.MainPage"
+             Title="Авторасчет">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Автоматический расчет" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"/>
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Первое число"/>
+                <Entry x:Name="Num1Entry" Keyboard="Numeric" TextChanged="OnInputChanged" Placeholder="Введите число"/>
+                <Label Text="Второе число: "/>
+                <Entry x:Name="Num2Entry" Keyboard="Numeric" TextChanged="OnInputChanged" Placeholder="Введите число"/>
+            </VerticalStackLayout>
+
+            <Label Text="Выберите операцию: " FontAttributes="Bold"/>
+            <RadioButton GroupName="Operations" Content="Сложение (+)" Value="add" CheckedChanged="OnOperationChanged"/>
+            <RadioButton GroupName="Operations" Content="Вычитание (-)" Value="subtract" CheckedChanged="OnOperationChanged"/>
+            <RadioButton GroupName="Operations" Content="Умножение (*)" Value="multiply" CheckedChanged="OnOperationChanged"/>
+            <RadioButton GroupName="Operations" Content="Деление (/)" Value="divide" CheckedChanged="OnOperationChanged"/>
+            <RadioButton GroupName="Operations" Content="Остаток от деления (%)" Value="mod" CheckedChanged="OnOperationChanged"/>
+            <RadioButton GroupName="Operations" Content="Вовзедение в степень (^)" Value="power" CheckedChanged="OnOperationChanged"/>
+
+            <VerticalStackLayout>
+                <Label Text="Результат:" FontAttributes="Bold"/>
+                <Entry x:Name="ResultEntry" IsEnabled="False" Placeholder="Здесь появится результат" FontAttributes="Bold" TextColor="Blue"/>
+            </VerticalStackLayout>
+
+            <Button Text="Включить ручной расчет" Clicked="OnEnableManualTabClicked" Background="Purple" TextColor="White" CornerRadius="10"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

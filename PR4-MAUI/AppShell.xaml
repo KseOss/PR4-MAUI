@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="PR4_MAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:PR4_MAUI"
+    Title="PR4_MAUI">
+
+    <TabBar>
+        <Tab Title="MainPage" Icon="dotnet_bot.png"> 
+            <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
+
+        <Tab Title="NewPage1" Icon="dotnet_bot.png" IsEnabled="False">
+            <ShellContent Route="NewPage1" ContentTemplate="{DataTemplate local:NewPage1}"/>
+        </Tab>
+        
+        <Tab Title="NewPage2" Icon="dotnet_bot.png">
+            <ShellContent Route="NewPage2" ContentTemplate="{DataTemplate local:NewPage2}"/>
+        </Tab>
+
+    </TabBar>
+
+</Shell>

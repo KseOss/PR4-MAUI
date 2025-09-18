@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PR4_MAUI.NewPage1"
+             Title="Ручной расчет">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Ручной расчет" 
+                   FontSize="18" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"/>
+
+            <Frame BorderColor="LightGray" CornerRadius="10" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Первое число:"/>
+                    <Entry x:Name="Num1Entry" 
+                           Keyboard="Numeric" 
+                           TextChanged="OnInputChanged"
+                           Placeholder="Введите число"/>
+
+                    <Label Text="Второе число:"/>
+                    <Entry x:Name="Num2Entry" 
+                           Keyboard="Numeric" 
+                           TextChanged="OnInputChanged"
+                           Placeholder="Введите число"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Label Text="Выберите операцию:" FontAttributes="Bold"/>
+
+            <RadioButton GroupName="Operations" 
+                         Content="Сложение (+)" 
+                         Value="add"
+                         CheckedChanged="OnOperationChanged"/>
+            <RadioButton GroupName="Operations" 
+                         Content="Вычитание (-)" 
+                         Value="subtract"
+                         CheckedChanged="OnOperationChanged"/>
+            <RadioButton GroupName="Operations" 
+                         Content="Умножение (*)" 
+                         Value="multiply"
+                         CheckedChanged="OnOperationChanged"/>
+            <RadioButton GroupName="Operations" 
+                         Content="Деление (/)" 
+                         Value="divide"
+                         CheckedChanged="OnOperationChanged"/>
+            <RadioButton GroupName="Operations" 
+                         Content="Остаток от деления (%)" 
+                         Value="modulo"
+                         CheckedChanged="OnOperationChanged"/>
+            <RadioButton GroupName="Operations" 
+                         Content="Возведение в степень (^)" 
+                         Value="power"
+                         CheckedChanged="OnOperationChanged"/>
+
+            <Button x:Name="CalculateButton" 
+                    Text="Рассчитать" 
+                    Clicked="OnCalculateClicked"
+                    BackgroundColor="#007bff"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"/>
+
+            <Frame BorderColor="LightBlue" CornerRadius="10" Padding="15" BackgroundColor="#F0F8FF">
+                <VerticalStackLayout>
+                    <Label Text="Результат:" FontAttributes="Bold"/>
+                    <Entry x:Name="ResultEntry" 
+                           IsEnabled="False" 
+                           Placeholder="Нажмите 'Рассчитать'"
+                           FontAttributes="Bold"
+                           TextColor="Blue"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

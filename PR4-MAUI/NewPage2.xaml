@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PR4_MAUI.NewPage2"
+             Title="О программе">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="О программе" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"/>
+
+            <Frame BorderColor="LightGreen" CornerRadius="15" Padding="20" BackgroundColor="#F8FFF8">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Арифметические операции" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="DarkGreen"/>
+
+                    <Label Text="Эта программа позволяет выполнять различные математические операции над двумя числами:"/>
+
+                    <Label Text="• Сложение (+)" FontAttributes="Italic"/>
+                    <Label Text="• Вычитание (-)" FontAttributes="Italic"/>
+                    <Label Text="• Умножение (*)" FontAttributes="Italic"/>
+                    <Label Text="• Деление (/)" FontAttributes="Italic"/>
+                    <Label Text="• Остаток от деления (%)" FontAttributes="Italic"/>
+                    <Label Text="• Возведение в степень (^)" FontAttributes="Italic"/>
+
+                    <Label Text="Программа реализована с использованием:"/>
+                    <Label Text="• .NET MAUI" FontAttributes="Italic"/>
+                    <Label Text="• C#" FontAttributes="Italic"/>
+                    <Label Text="• XAML" FontAttributes="Italic"/>
+
+                    <Label Text="Выолнила работу: Сухомяткина Ксения" FontSize="14"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
