@@ -7,18 +7,14 @@
     Title="PR4_MAUI">
 
     <TabBar>
-        <Tab Title="MainPage" Icon="dotnet_bot.png"> 
-            <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}"/>
+        <Tab Title="Авторасчет">
+            <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-
-        <Tab Title="NewPage1" Icon="dotnet_bot.png" IsEnabled="False">
-            <ShellContent Route="NewPage1" ContentTemplate="{DataTemplate local:NewPage1}"/>
+        <Tab x:Name="ManualTab" Title="Ручной расчет">
+            <ShellContent Route="NewPage1" ContentTemplate="{DataTemplate local:NewPage1}" />
         </Tab>
-        
-        <Tab Title="NewPage2" Icon="dotnet_bot.png">
-            <ShellContent Route="NewPage2" ContentTemplate="{DataTemplate local:NewPage2}"/>
+        <Tab Title="О программе">
+            <ShellContent Route="NewPage2" ContentTemplate="{DataTemplate local:NewPage2}" />
         </Tab>
-
     </TabBar>
-
 </Shell>
