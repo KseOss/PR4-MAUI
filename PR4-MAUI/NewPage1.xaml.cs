@@ -1,5 +1,5 @@
-using System;
 using Microsoft.Maui.Controls;
+using System.Text.RegularExpressions;
 namespace PR4_MAUI;
 
 public partial class NewPage1 : ContentPage
@@ -14,67 +14,94 @@ public partial class NewPage1 : ContentPage
         ResultEntry.Text = string.Empty;
     }
 
-    private void OnOperationChanged(object sender, CheckedChangedEventArgs e)
+    private void OnCalculateClicked(object sender, EventArgs e)
     {
-        if (e.Value && sender is RadioButton radioButton)
+        try
         {
-            selectedOperation = radioButton.Value.ToString();
+            double result = 0;
+
+            // Пытаемся сначала распарсить выражение из единого поля
+            if (!string.IsNullOrWhiteSpace(ExpressionEntry.Text))
+            {
+                result = CalculateFromExpression(ExpressionEntry.Text);
+            }
+            // Если выражение не введено, используем отдельные поля
+            else if (!string.IsNullOrWhiteSpace(Num1Entry.Text) &&
+                     !string.IsNullOrWhiteSpace(Num2Entry.Text) &&
+                     OperationPicker.SelectedItem != null)
+            {
+                double num1 = double.Parse(Num1Entry.Text);
+                double num2 = double.Parse(Num2Entry.Text);
+                string operation = OperationPicker.SelectedItem.ToString();
+
+                result = PerformOperation(num1, num2, operation);
+            }
+            else
+            {
+                DisplayAlert("Ошибка", "Введите выражение или заполните все поля отдельно!", "OK");
+                return;
+            }
+
+            ResultEntry.Text = result.ToString("F4");
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Ошибка", $"Некорректный ввод: {ex.Message}", "OK");
         }
     }
 
-    private void OnCalculateClicked(object sender, EventArgs e)
+    private double CalculateFromExpression(string expression)
     {
-        if (string.IsNullOrEmpty(selectedOperation))
+        // Убираем лишние пробелы
+        expression = expression.Trim();
+
+        // Регулярное выражение для поиска чисел и оператора
+        var match = Regex.Match(expression, @"^\s*([-+]?\d*\.?\d+)\s*([+\-*/%^])\s*([-+]?\d*\.?\d+)\s*$");
+
+        if (!match.Success)
         {
-            DisplayAlert("������", "�������� ��������!", "OK");
-            return;
+            throw new ArgumentException("Некорректный формат выражения. Используйте: число операция число");
         }
 
-        if (!double.TryParse(Num1Entry.Text, out double num1) ||
-            !double.TryParse(Num2Entry.Text, out double num2))
-        {
-            DisplayAlert("������", "������� ���������� �����!", "OK");
-            return;
-        }
+        double num1 = double.Parse(match.Groups[1].Value);
+        string operation = match.Groups[2].Value;
+        double num2 = double.Parse(match.Groups[3].Value);
 
-        double result = PerformOperation(num1, num2, selectedOperation);
-        ResultEntry.Text = result.ToString("F4");
+        return PerformOperation(num1, num2, operation);
     }
 
     private double PerformOperation(double num1, double num2, string operation)
     {
-        switch (operation.ToLower())
+        switch (operation)
         {
-            case "add":
+            case "+":
                 return num1 + num2;
 
-            case "subtract":
+            case "-":
                 return num1 - num2;
 
-            case "multiply":
+            case "*":
                 return num1 * num2;
 
-            case "divide":
+            case "/":
                 if (num2 == 0)
                 {
-                    DisplayAlert("������", "������� �� ���� ����������!", "OK");
-                    return 0;
+                    throw new DivideByZeroException("Деление на ноль невозможно!");
                 }
                 return num1 / num2;
 
-            case "modulo":
+            case "%":
                 if (num2 == 0)
                 {
-                    DisplayAlert("������", "������� �� ���� ����������!", "OK");
-                    return 0;
+                    throw new DivideByZeroException("Деление на ноль невозможно!");
                 }
                 return num1 % num2;
 
-            case "power":
+            case "^":
                 return Math.Pow(num1, num2);
 
             default:
-                return 0;
+                throw new ArgumentException($"Неизвестная операция: {operation}");
         }
     }
 }
