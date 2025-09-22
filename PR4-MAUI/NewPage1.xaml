@@ -11,67 +11,60 @@
                    FontAttributes="Bold" 
                    HorizontalOptions="Center"/>
 
-            <Frame BorderColor="LightGray" CornerRadius="10" Padding="15">
                 <VerticalStackLayout Spacing="10">
-                    <Label Text="Первое число:"/>
-                    <Entry x:Name="Num1Entry" 
-                           Keyboard="Numeric" 
+                    <Label Text="Введите выражение" FontAttributes="Bold"/>
+                    <Entry x:Name="ExpressionEntry" 
+                           Placeholder="Число операция число"
                            TextChanged="OnInputChanged"
-                           Placeholder="Введите число"/>
+                           FontSize="16"/>
 
-                    <Label Text="Второе число:"/>
-                    <Entry x:Name="Num2Entry" 
-                           Keyboard="Numeric" 
-                           TextChanged="OnInputChanged"
-                           Placeholder="Введите число"/>
+                    <Label Text="Или введите отдельно:" FontAttributes="Bold" Margin="0,10,0,0"/>
+
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+                        <Label Text="Первое число:" Grid.Row="0" Grid.Column="0"/>
+                        <Entry x:Name="Num1Entry" 
+                               Keyboard="Numeric" 
+                               TextChanged="OnInputChanged"
+                               Placeholder="Число 1"
+                               Grid.Row="1" Grid.Column="0"/>
+
+                        <Label Text="Операция:" Grid.Row="0" Grid.Column="1"/>
+                        <Picker x:Name="OperationPicker"
+                                Title="Выберите операцию"
+                                Grid.Row="1" Grid.Column="1">
+                            <Picker.Items>
+                                <x:String>+</x:String>
+                                <x:String>-</x:String>
+                                <x:String>*</x:String>
+                                <x:String>/</x:String>
+                                <x:String>%</x:String>
+                                <x:String>^</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                        <Label Text="Второе число:" Grid.Row="0" Grid.Column="2"/>
+                        <Entry x:Name="Num2Entry" 
+                               Keyboard="Numeric" 
+                               TextChanged="OnInputChanged"
+                               Placeholder="Число 2"
+                               Grid.Row="1" Grid.Column="2"/>
+                    </Grid>
                 </VerticalStackLayout>
-            </Frame>
 
-            <Label Text="Выберите операцию:" FontAttributes="Bold"/>
-
-            <RadioButton GroupName="Operations" 
-                         Content="Сложение (+)" 
-                         Value="add"
-                         CheckedChanged="OnOperationChanged"/>
-            <RadioButton GroupName="Operations" 
-                         Content="Вычитание (-)" 
-                         Value="subtract"
-                         CheckedChanged="OnOperationChanged"/>
-            <RadioButton GroupName="Operations" 
-                         Content="Умножение (*)" 
-                         Value="multiply"
-                         CheckedChanged="OnOperationChanged"/>
-            <RadioButton GroupName="Operations" 
-                         Content="Деление (/)" 
-                         Value="divide"
-                         CheckedChanged="OnOperationChanged"/>
-            <RadioButton GroupName="Operations" 
-                         Content="Остаток от деления (%)" 
-                         Value="modulo"
-                         CheckedChanged="OnOperationChanged"/>
-            <RadioButton GroupName="Operations" 
-                         Content="Возведение в степень (^)" 
-                         Value="power"
-                         CheckedChanged="OnOperationChanged"/>
-
-            <Button x:Name="CalculateButton" 
+                <Button x:Name="CalculateButton" 
                     Text="Рассчитать" 
                     Clicked="OnCalculateClicked"
                     BackgroundColor="#007bff"
                     TextColor="White"
                     CornerRadius="10"
                     HeightRequest="50"/>
-
-            <Frame BorderColor="LightBlue" CornerRadius="10" Padding="15" BackgroundColor="#F0F8FF">
-                <VerticalStackLayout>
-                    <Label Text="Результат:" FontAttributes="Bold"/>
-                    <Entry x:Name="ResultEntry" 
+            <VerticalStackLayout>
+                <Label Text="Результат:" FontAttributes="Bold"/>
+                <Entry x:Name="ResultEntry" 
                            IsEnabled="False" 
                            Placeholder="Нажмите 'Рассчитать'"
-                           FontAttributes="Bold"
-                           TextColor="Blue"/>
-                </VerticalStackLayout>
-            </Frame>
+                           FontAttributes="Bold"/>
+            </VerticalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
