@@ -11,30 +11,25 @@
                    FontAttributes="Bold" 
                    HorizontalOptions="Center"/>
 
-            <Frame BorderColor="LightGreen" CornerRadius="15" Padding="20" BackgroundColor="#F8FFF8">
-                <VerticalStackLayout Spacing="15">
-                    <Label Text="Арифметические операции" 
+
+            <VerticalStackLayout Spacing="15">
+                <Label Text="Арифметические операции" 
                            FontSize="18" 
-                           FontAttributes="Bold"
-                           TextColor="DarkGreen"/>
+                           FontAttributes="Bold"/>
 
-                    <Label Text="Эта программа позволяет выполнять различные математические операции над двумя числами:"/>
+                <Label Text="Эта программа позволяет выполнять различные математические операции над двумя числами:"/>
 
-                    <Label Text="• Сложение (+)" FontAttributes="Italic"/>
-                    <Label Text="• Вычитание (-)" FontAttributes="Italic"/>
-                    <Label Text="• Умножение (*)" FontAttributes="Italic"/>
-                    <Label Text="• Деление (/)" FontAttributes="Italic"/>
-                    <Label Text="• Остаток от деления (%)" FontAttributes="Italic"/>
-                    <Label Text="• Возведение в степень (^)" FontAttributes="Italic"/>
+                <Label Text="• Сложение (+)" />
+                <Label Text="• Вычитание (-)" />
+                <Label Text="• Умножение (*)" />
+                <Label Text="• Деление (/)" />
+                <Label Text="• Остаток от деления (%)" />
+                <Label Text="• Возведение в степень (^)" />
 
-                    <Label Text="Программа реализована с использованием:"/>
-                    <Label Text="• .NET MAUI" FontAttributes="Italic"/>
-                    <Label Text="• C#" FontAttributes="Italic"/>
-                    <Label Text="• XAML" FontAttributes="Italic"/>
+                
 
-                    <Label Text="Выолнила работу: Сухомяткина Ксения" FontSize="14"/>
-                </VerticalStackLayout>
-            </Frame>
+                <Label Text="Выолнила работу: Сухомяткина Ксения" FontSize="14"/>
+            </VerticalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
